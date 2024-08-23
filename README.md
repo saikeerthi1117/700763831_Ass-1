@@ -14,6 +14,6 @@ Sloution: In Google Colab, this code generates an input.txt file with the lines 
 3)Write a program, which reads heights (inches.) of customers into a list and convert these heights to centimeters in a separate list using:
 
 Nested Interactive loop.
-List comprehensions Example: L1: [150,155, 145, 148] Output: [68.03, 70.3, 65.77, 67.13]
+List comprehensions Example: L1: [150,155, 145, 148] Output: [312.42, 363.22, 396.24, 436.88]
 
 Solution: This Python code uses both list comprehension and a nested loop to convert a list of client heights from inches to centimeters. The user is invited to enter the number of heights and the heights themselves in inches within the main() method. The conversion is subsequently carried out by the software using the function inches_to_centimeters_nested() in a loop, where each height is multiplied by 2.54 and rounded to two decimal places. Then, with a more condensed list comprehension, it uses inches_to_centimeters_list_comprehension() to accomplish the same goal. For comparison, both results are printed. The application shows an error message if the input is invalid.
