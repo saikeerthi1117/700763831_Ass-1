@@ -1,0 +1,144 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNh4f/jSOOfvCwPf+xvGp+Q",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/saikeerthi1117/700763831_Ass-1/blob/main/Neural%20Networks%20ICP2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "x6oiDOxYFYW2",
+        "outputId": "a8077779-e6a2-4e77-ad5f-e5be2e86c5c7"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Average Salary for Employees: 65000.0\n",
+            "Average Salary for FullTimeEmployee: 80000.0\n",
+            "Total Employees: 3\n"
+          ]
+        }
+      ],
+      "source": [
+        "#Program 1\n",
+        "class Employee:\n",
+        "    # Class variable to count the number of employees\n",
+        "    employee_count = 0\n",
+        "\n",
+        "    def __init__(self, name, family, salary, department):\n",
+        "        # Instance variables\n",
+        "        self.name = name\n",
+        "        self.family = family\n",
+        "        self.salary = salary\n",
+        "        self.department = department\n",
+        "\n",
+        "        # Increment the employee count when a new employee is created\n",
+        "        Employee.employee_count += 1\n",
+        "\n",
+        "    def average_salary(self, *salaries):\n",
+        "        # Calculate and return the average salary\n",
+        "        total_salary = sum(salaries) + self.salary\n",
+        "        num_employees = len(salaries) + 1  # Include the current instance\n",
+        "        return total_salary / num_employees\n",
+        "\n",
+        "\n",
+        "class FullTimeEmployee(Employee):\n",
+        "    # Additional properties for FullTimeEmployee can be added here\n",
+        "\n",
+        "    def __init__(self, name, family, salary, department, fulltime_property):\n",
+        "        # Call the constructor of the base class (Employee)\n",
+        "        super().__init__(name, family, salary, department)\n",
+        "\n",
+        "        # Additional property specific to FullTimeEmployee\n",
+        "        self.fulltime_property = fulltime_property\n",
+        "\n",
+        "\n",
+        "# Create instances of Employee class\n",
+        "employee1 = Employee(\"Keerthi t\", \"Family1\", 60000, \"DM\")\n",
+        "employee2 = Employee(\"Preethi t\", \"Family2\", 70000, \"HR\")\n",
+        "\n",
+        "# Call the average_salary function for Employee class\n",
+        "average_salary_employee = employee1.average_salary(employee2.salary)\n",
+        "print(f\"Average Salary for Employees: {average_salary_employee}\")\n",
+        "\n",
+        "# Create instances of FullTimeEmployee class\n",
+        "fulltime_employee = FullTimeEmployee(\"Priya\", \"Family3\", 80000, \"Software\", \"FullTimeProperty\")\n",
+        "\n",
+        "# Call the average_salary function for FullTimeEmployee class\n",
+        "average_salary_fulltime_employee = fulltime_employee.average_salary()\n",
+        "print(f\"Average Salary for FullTimeEmployee: {average_salary_fulltime_employee}\")\n",
+        "\n",
+        "# Print the total count of employees\n",
+        "print(f\"Total Employees: {Employee.employee_count}\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "# Create a random vector of size 20 with floats in the range 1 to 20\n",
+        "random_vector = np.random.uniform(1, 20, 20)\n",
+        "\n",
+        "# Reshape the array to 4 by 5\n",
+        "reshaped_array = random_vector.reshape(4, 5)\n",
+        "\n",
+        "# Replace the maximum in each row by 0 without using a for loop\n",
+        "max_in_rows = np.max(reshaped_array, axis=1, keepdims=True)\n",
+        "reshaped_array[reshaped_array == max_in_rows] = 0\n",
+        "\n",
+        "print(\"Reshaped Array after replacing max in each row by 0:\")\n",
+        "print(reshaped_array)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Fmt7Tq2Wq1q2",
+        "outputId": "8571e9b6-054c-4066-84c2-a6e650be77c8"
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Reshaped Array after replacing max in each row by 0:\n",
+            "[[ 3.55486522  5.99582186  1.0966064   8.6638421   0.        ]\n",
+            " [ 0.          2.54660847 13.1452557  12.16872422 13.00908432]\n",
+            " [ 0.          5.8832581   3.95486941 11.70575596  2.6765229 ]\n",
+            " [ 9.8450024   0.          3.99957309  1.5631057  10.96916463]]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
